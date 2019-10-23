@@ -62,13 +62,7 @@ db.sync({ force: true })
     const teams = teamNames.map(teamName => Team.create({ name: teamName }));
     return Promise.all(teams);
   })
-  .then(() => {
-    console.log("Deafult user set.");
-
-    const users = [{ email: 'git@git.com', password: 'helloIknowitiswrong' }]
-    const defaultUser = users.map(user => User.create({ email: user.email, password: user.password }))
-    return Promise.all(users)
-  })
+ 
   .then(() => {
     const players = [
       { name: 'Žižek', number: 4, teamId: 1 },
