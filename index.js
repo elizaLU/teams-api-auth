@@ -57,34 +57,41 @@ db.sync({ force: true })
     // return Promise.all([team, team2])
 
     // Script that iterates over arrays and creates rows in the database for them
-    const teamNames = ["Egel", "Das", "Eagle", "Pinguin"];
+    const teamNames = ['Nihilists', 'NatureForces', 'Mathematicians', 'Wizards'];
 
     const teams = teamNames.map(teamName => Team.create({ name: teamName }));
     return Promise.all(teams);
   })
   .then(() => {
+    console.log("Deafult user set.");
+
+    const users = [{ email: 'git@git.com', password: 'helloIknowitiswrong' }]
+    const defaultUser = users.map(user => User.create({ email: user.email, password: user.password }))
+    return Promise.all(users)
+  })
+  .then(() => {
     const players = [
-      { name: "Mimi", number: 4, teamId: 1 },
-      { name: "Wouter", number: 1, teamId: 2 },
-      { name: "David", number: 9, teamId: 3 },
-      { name: "Bram", number: 8, teamId: 4 },
-      { name: "Lisa", number: 10, teamId: 1 },
-      { name: "Miloud", number: 2, teamId: 2 },
-      { name: "Violeta", number: 3, teamId: 3 },
-      { name: "Johan", number: 5, teamId: 4 },
-      { name: "Danny", number: 6, teamId: 3 },
-      { name: "Rembert", number: 7, teamId: 2 },
-      { name: "Kelley", number: 10, teamId: 1 },
-      { name: "Jeroen", number: 12, teamId: 4 },
-      { name: "Rein", number: 11, teamId: 2 }
-    ];
+      { name: 'Žižek', number: 4, teamId: 1 },
+      { name: 'Tzara', number: 1, teamId: 1 },
+      { name: 'de Sade', number: 9, teamId: 1 },
+      { name: 'Nietzsche', number: 8, teamId: 1 },
+      { name: 'Carravetta', number: 10, teamId: 1 },
+      { name: 'Brassier', number: 2, teamId: 1 },
+      { name: 'Fardid', number: 3, teamId: 2 },
+      { name: 'GrumpyCat', number: 5, teamId: 2 },
+      { name: 'Bacteria', number: 6, teamId: 2 },
+      { name: 'Water', number: 7, teamId: 2 },
+      { name: 'Earth', number: 10, teamId: 2 },
+      { name: 'Fire', number: 12, teamId: 2 },
+      { name: 'Wind', number: 11, teamId: 2 },
+    ]
 
     const playerPromises = players.map(player => Player.create(player));
     return Promise.all(playerPromises);
   })
   .catch(console.error);
 
-/* 
+/*
 
 TODO
 
